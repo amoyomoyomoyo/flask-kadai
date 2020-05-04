@@ -41,9 +41,11 @@ def edit():
 def update():
     prof_dict = get_profile()
     # prof_dictの値を変更
-    prof_dict['name'] = request.form['name']
-    prof_dict['age'] = request.form['age']
-    prof_dict['sex'] = request.form['sex']
+    for dic in prof_dict:
+        if dic['name'] == request.form['name']:
+            dic['name'] = request.form['name']
+            dic['age'] = request.form['age']
+            dic['sex'] = request.form['sex']
 
     update_profile(prof_dict)
 
